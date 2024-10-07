@@ -1,16 +1,19 @@
 # pks_full
 
-A new Flutter project.
+Товмасян Григорий ЭФБО-04-22
 
-## Getting Started
+Добавление поля навигации с разделами "Главная", "Избранное" и "Профиль". 
 
-This project is a starting point for a Flutter application.
+На странице "Главное" отображается лента с альбомами, где можно добавить альбом в "Избранное".
 
-A few resources to get you started if this is your first Flutter project:
+На странице "Избранное" отображаются избранные альбомы.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+На странице "Профиль" отображается аватарка пользователя, фамилия, имя, номер телефона и адрес эл.почты (пока заглушки).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+На странице альбома можно удалить альбом. 
+
+ https://github.com/user-attachments/assets/bdd5bc06-1d5a-4599-83f9-9667b9c092a1
+
+
+
+
