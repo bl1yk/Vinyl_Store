@@ -1,4 +1,3 @@
-// add_album_page.dart
 import 'package:flutter/material.dart';
 import 'package:pks_full/models/album.dart';
 
@@ -11,28 +10,31 @@ class AddAlbumPage extends StatefulWidget {
 
 class _AddAlbumPageState extends State<AddAlbumPage> {
   final TextEditingController albumNameController = TextEditingController();
+  final TextEditingController albumArtistController = TextEditingController();
   final TextEditingController albumCoverController = TextEditingController();
   final TextEditingController albumInfoController = TextEditingController();
   final TextEditingController albumPriceController = TextEditingController();
   final TextEditingController albumListenController = TextEditingController();
-  final TextEditingController albumTracklistController = TextEditingController();
+  final TextEditingController albumTrackListController = TextEditingController();
 
   void createAlbum() {
     String albumName = albumNameController.text;
+    String albumArtist = albumArtistController.text;
     String albumCover = albumCoverController.text;
     String albumInfo = albumInfoController.text;
     double albumPrice = double.tryParse(albumPriceController.text) ?? 0;
     String albumListen = albumListenController.text;
-    List<String> albumTracklist = albumTracklistController.text.split('\n');
+    List<String> albumTrackList = albumTrackListController.text.split('\n');
 
-    if (albumName.isNotEmpty && albumCover.isNotEmpty && albumInfo.isNotEmpty && albumPrice > 0 && albumListen.isNotEmpty) {
+    if (albumName.isNotEmpty && albumArtist.isNotEmpty && albumCover.isNotEmpty && albumInfo.isNotEmpty && albumPrice > 0 && albumListen.isNotEmpty) {
       Album album = Album(
         albumName: albumName,
+        albumArtist: albumArtist,
         albumCover: albumCover,
         albumInfo: albumInfo,
         price: albumPrice,
         listen: albumListen,
-        tracklist: albumTracklist,
+        trackList: albumTrackList,
       );
       Navigator.pop(context, album);
     }
@@ -41,11 +43,12 @@ class _AddAlbumPageState extends State<AddAlbumPage> {
   @override
   void dispose() {
     albumNameController.dispose();
+    albumArtistController.dispose();
     albumCoverController.dispose();
     albumInfoController.dispose();
     albumPriceController.dispose();
     albumListenController.dispose();
-    albumTracklistController.dispose();
+    albumTrackListController.dispose();
     super.dispose();
   }
 
@@ -70,7 +73,22 @@ class _AddAlbumPageState extends State<AddAlbumPage> {
                   ),
                   hintText: "Введите название альбома",
                   hintStyle: const TextStyle(color: Color.fromRGBO(102, 155, 188, 0.7)),
-                  labelText: "Альбом",
+                  labelText: "Название альбома",
+                  labelStyle: const TextStyle(color: Color.fromRGBO(102, 155, 188, 1)),
+                ),
+                maxLines: 1,
+                style: const TextStyle(color: Colors.white),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: albumArtistController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  hintText: "Введите исполнителя",
+                  hintStyle: const TextStyle(color: Color.fromRGBO(102, 155, 188, 0.7)),
+                  labelText: "Исполнитель",
                   labelStyle: const TextStyle(color: Color.fromRGBO(102, 155, 188, 1)),
                 ),
                 maxLines: 1,
@@ -138,7 +156,7 @@ class _AddAlbumPageState extends State<AddAlbumPage> {
               ),
               const SizedBox(height: 16),
               TextField(
-                controller: albumTracklistController,
+                controller: albumTrackListController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(14),

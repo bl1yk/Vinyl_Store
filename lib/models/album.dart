@@ -1,18 +1,23 @@
-// album.dart
 class Album {
   final String albumName;
+  final String albumArtist;
   final String albumCover;
-  final String albumInfo;
   final double price;
+  final String albumInfo;
+  final List<String> trackList;
   final String listen;
-  final List<String> tracklist;
+  bool isFavorite;
+  int quantity;
 
   Album({
     required this.albumName,
+    required this.albumArtist,
     required this.albumCover,
-    required this.albumInfo,
     required this.price,
+    required this.albumInfo,
+    required this.trackList,
     required this.listen,
-    required this.tracklist,
+    this.isFavorite = false,
+    this.quantity = 0,
   });
 }

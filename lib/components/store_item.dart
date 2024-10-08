@@ -5,9 +5,18 @@ import 'package:pks_full/pages/item_page.dart';
 class StoreItem extends StatelessWidget {
   final Album album;
   final int index;
+  final Function(int) toggleFavorite;
   final Function(int) removeAlbum;
+  final Function(int) addToCart; // Добавьте этот параметр
 
-  const StoreItem({super.key, required this.album, required this.index, required this.removeAlbum});
+  const StoreItem({
+    super.key,
+    required this.album,
+    required this.index,
+    required this.toggleFavorite,
+    required this.removeAlbum,
+    required this.addToCart, // Добавьте этот параметр
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +24,15 @@ class StoreItem extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ItemPage(album: album)),
+          MaterialPageRoute(
+            builder: (context) => ItemPage(
+              album: album,
+              index: index,
+              toggleFavorite: toggleFavorite,
+              removeAlbum: removeAlbum,
+              addToCart: addToCart, // Добавьте этот параметр
+            ),
+          ),
         );
       },
       child: Padding(
@@ -34,42 +51,23 @@ class StoreItem extends StatelessWidget {
                   padding: const EdgeInsets.all(5.0),
                   child: Text(
                     album.albumName,
-                    style: const TextStyle(color: Color.fromRGBO(246, 247, 235, 1), fontSize: 24),
+                    style: const TextStyle(color: Color.fromRGBO(246, 247, 235, 1), fontSize: 18),
                     textAlign: TextAlign.center,
                   ),
                 ),
               ),
               Image.asset(
                 album.albumCover,
-                height: 300,
-                width: 300,
+                height: 150,
+                width: 150,
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 10),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: RichText(
-                      text: TextSpan(
-                        style: const TextStyle(color: Color.fromRGBO(246, 247, 235, 1), fontSize: 16),
-                        children: [
-                          const TextSpan(
-                            text: '    ',
-                          ),
-                          TextSpan(
-                            text: album.albumInfo,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               IconButton(
-                icon: const Icon(Icons.delete_outline),
+                icon: const Icon(Icons.favorite_border),
+                color: const Color.fromRGBO(102, 155, 188, 1),
                 onPressed: () {
-                  removeAlbum(index);
+                  toggleFavorite(index);
                 },
               ),
             ],
