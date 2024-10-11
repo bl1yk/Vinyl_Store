@@ -7,7 +7,7 @@ class FavouritePage extends StatefulWidget {
   final Function(int) removeFromFavorites;
   final Function(int) toggleFavorite;
   final Function(int) removeAlbum;
-  final Function(int) addToCart; // Добавьте этот параметр
+  final Function(int) addToCart;
 
   const FavouritePage({
     super.key,
@@ -15,7 +15,7 @@ class FavouritePage extends StatefulWidget {
     required this.removeFromFavorites,
     required this.toggleFavorite,
     required this.removeAlbum,
-    required this.addToCart, // Добавьте этот параметр
+    required this.addToCart,
   });
 
   @override
@@ -60,7 +60,7 @@ class _FavouritePageState extends State<FavouritePage> {
                     index: index,
                     toggleFavorite: widget.toggleFavorite,
                     removeAlbum: widget.removeAlbum,
-                    addToCart: widget.addToCart, // Добавьте этот параметр
+                    addToCart: widget.addToCart,
                   ),
                 ),
               );

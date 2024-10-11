@@ -7,7 +7,7 @@ class StoreItem extends StatelessWidget {
   final int index;
   final Function(int) toggleFavorite;
   final Function(int) removeAlbum;
-  final Function(int) addToCart; // Добавьте этот параметр
+  final Function(int) addToCart;
 
   const StoreItem({
     super.key,
@@ -15,7 +15,7 @@ class StoreItem extends StatelessWidget {
     required this.index,
     required this.toggleFavorite,
     required this.removeAlbum,
-    required this.addToCart, // Добавьте этот параметр
+    required this.addToCart,
   });
 
   @override
@@ -30,7 +30,7 @@ class StoreItem extends StatelessWidget {
               index: index,
               toggleFavorite: toggleFavorite,
               removeAlbum: removeAlbum,
-              addToCart: addToCart, // Добавьте этот параметр
+              addToCart: addToCart,
             ),
           ),
         );

@@ -261,13 +261,13 @@ final List<Album> entries = <Album>[
 class HomePage extends StatefulWidget {
   final Function(int) removeAlbum;
   final Function(int) toggleFavorite;
-  final Function(int) addToCart; // Добавьте этот параметр
+  final Function(int) addToCart;
 
   const HomePage({
     super.key,
     required this.removeAlbum,
     required this.toggleFavorite,
-    required this.addToCart, // Добавьте этот параметр
+    required this.addToCart,
   });
 
   @override
@@ -300,7 +300,7 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: const Color.fromRGBO(57, 62, 65, 1),
       ),
-      backgroundColor: const Color.fromRGBO(57, 62, 65, 1), // Убедитесь, что цвет фона соответствует цвету навигационной панели
+      backgroundColor: const Color.fromRGBO(57, 62, 65, 1),
       body: entries.isEmpty
           ? const Center(
         child: Text(
@@ -320,7 +320,7 @@ class _HomePageState extends State<HomePage> {
             index: index,
             toggleFavorite: widget.toggleFavorite,
             removeAlbum: widget.removeAlbum,
-            addToCart: widget.addToCart, // Добавьте этот параметр
+            addToCart: widget.addToCart,
           );
         },
       ),
