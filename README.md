@@ -1,16 +1,8 @@
-# pks_full
+# pks_6
 
-A new Flutter project.
+Товмасян Григорий ЭФБО-04-22
 
-## Getting Started
+Добавлена страница корзины, кнопка корзины на панели навигации, кнопка добавления альбома в корзину на странице альбома, кнопки изменения количества альбомов в корзине, а также удаление альбома из корзины с помощью слайда 
 
-This project is a starting point for a Flutter application.
+https://github.com/user-attachments/assets/40422a8e-daae-49bc-b1e7-a0f7eba53620
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
