@@ -64,8 +64,10 @@ class StoreItem extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               IconButton(
-                icon: const Icon(Icons.favorite_border),
-                color: const Color.fromRGBO(102, 155, 188, 1),
+                icon: Icon(
+                  album.isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: const Color.fromRGBO(102, 155, 188, 1),
+                ),
                 onPressed: () {
                   toggleFavorite(index);
                 },

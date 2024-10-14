@@ -18,6 +18,40 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  void _showDeleteConfirmationDialog(BuildContext context, int index) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: const Color.fromRGBO(102, 155, 188, 1),
+          title: const Text('Подтверждение удаления'),
+          content: const Text('Вы уверены, что хотите удалить этот товар из корзины?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Отмена', style: TextStyle(color: Colors.black)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Удалить', style: TextStyle(color: Colors.black)),
+              onPressed: () {
+                widget.removeFromCart(index);
+                Navigator.of(context).pop();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('${widget.cartEntries[index].albumName} удален из корзины'),
+                    duration: const Duration(seconds: 2),
+                  ),
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,16 +79,20 @@ class _CartPageState extends State<CartPage> {
           return Dismissible(
             key: Key(album.albumName),
             direction: DismissDirection.endToStart,
-            onDismissed: (direction) {
-              widget.removeFromCart(index);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('${album.albumName} удален из корзины'),
-                  duration: const Duration(seconds: 2),
-                ),
-              );
+            confirmDismiss: (direction) async {
+              if (direction == DismissDirection.endToStart) {
+                _showDeleteConfirmationDialog(context, index);
+                return false; // Prevent automatic dismissal
+              }
+              return null;
             },
             background: Container(
+              color: Colors.red,
+              alignment: Alignment.centerRight,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: const Icon(Icons.delete, color: Colors.white),
+            ),
+            secondaryBackground: Container(
               color: Colors.red,
               alignment: Alignment.centerRight,
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -80,7 +118,7 @@ class _CartPageState extends State<CartPage> {
                       if (album.quantity > 1) {
                         widget.updateQuantity(index, album.quantity - 1);
                       } else {
-                        widget.removeFromCart(index);
+                        _showDeleteConfirmationDialog(context, index);
                       }
                     },
                   ),
