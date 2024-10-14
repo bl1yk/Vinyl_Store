@@ -140,7 +140,7 @@ class _ProfilePageState extends State<ProfilePage> {
             const Center(
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('assets/images/default_avatar.png'),
+                backgroundImage: AssetImage('assets/images/ava.png'),
                 backgroundColor: Color.fromRGBO(102, 155, 188, 1),
               ),
             ),
