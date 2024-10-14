@@ -11,4 +11,7 @@
 Редактирование профиля.
 
 
+https://github.com/user-attachments/assets/59e30a87-5471-45e1-bbcc-6a9d2827916d
+
+
 
